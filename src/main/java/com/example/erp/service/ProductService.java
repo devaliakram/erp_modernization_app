@@ -6,13 +6,12 @@ import com.example.erp.dto.ProductResponse;
 import com.example.erp.exception.ProductNotFoundException;
 import com.example.erp.model.Product;
 import com.example.erp.repository.ProductRepository;
-
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -78,11 +77,10 @@ public class ProductService {
     public ProductResponse updatePartial(ProductResponse productRequest, Long id) {
         Product product = repository.findById(id).orElseThrow(() -> new ProductNotFoundException("product is not found" + id));
 
-        Optional.ofNullable(productRequest.category()).ifPresent(product::setCategory);
-
-       /* if(productRequest.category()!=null){
+        /* if(productRequest.category()!=null){
            product.setCategory(productRequest.category());
-        }*/
+        */
+        Optional.ofNullable(productRequest.category()).ifPresent(product::setCategory);
 
         Optional.ofNullable(productRequest.price()).ifPresent(product::setPrice);
 

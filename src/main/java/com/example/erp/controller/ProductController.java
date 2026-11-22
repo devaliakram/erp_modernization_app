@@ -2,17 +2,14 @@ package com.example.erp.controller;
 
 import com.example.erp.dto.ProductRequest;
 import com.example.erp.dto.ProductResponse;
-import com.example.erp.dto.StockAdjustmentRequest;
 import com.example.erp.model.Product;
 import com.example.erp.service.ProductService;
 import jakarta.validation.Valid;
-
-import java.net.URI;
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")

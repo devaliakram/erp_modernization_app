@@ -1,0 +1,64 @@
+package com.example.erp.controller;
+
+import com.example.erp.dto.ProductRequest;
+import com.example.erp.dto.ProductResponse;
+import com.example.erp.dto.StockAdjustmentRequest;
+import com.example.erp.model.Product;
+import com.example.erp.service.ProductService;
+import jakarta.validation.Valid;
+
+import java.net.URI;
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/products")
+public class ProductController {
+
+    private final ProductService service;
+
+    public ProductController(ProductService service) {
+        this.service = service;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ProductResponse>> all() {
+        return ResponseEntity.status(HttpStatus.OK).body(service.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public Product one(@PathVariable Long id) {
+        return service.findById(id);
+    }
+
+    @PostMapping
+    public ResponseEntity<Product> create(@Valid @RequestBody ProductRequest request) {
+        Product created = service.create(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductResponse> updateProduct(@Valid @RequestBody ProductRequest request, @PathVariable Long id) {
+        ProductResponse productResponse = service.updateProduct(request, id);
+        return ResponseEntity.status(HttpStatus.OK).body(productResponse);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        service.deleteProduct(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping
+    public ResponseEntity<ProductResponse> updatePartial(@RequestBody ProductResponse productResponse,
+                                                         @PathVariable Long id) {
+        ProductResponse productResponse1 = service.updatePartial(productResponse, id);
+        return ResponseEntity.ok(productResponse);
+        //  return ResponseEntity.status(HttpStatus.OK).body(service.updatePartial(productResponse, id));
+    }
+
+
+}

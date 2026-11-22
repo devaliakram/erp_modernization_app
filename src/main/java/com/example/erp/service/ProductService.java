@@ -1,6 +1,6 @@
 package com.example.erp.service;
 
-import com.example.erp.ProductMapper;
+import com.example.erp.mapper.ProductMapper;
 import com.example.erp.dto.ProductRequest;
 import com.example.erp.dto.ProductResponse;
 import com.example.erp.exception.ProductNotFoundException;

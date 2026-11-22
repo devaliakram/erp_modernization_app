@@ -1,4 +1,4 @@
-package com.example.erp;
+package com.example.erp.mapper;
 
 import com.example.erp.dto.ProductResponse;
 import com.example.erp.model.Product;

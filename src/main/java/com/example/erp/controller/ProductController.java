@@ -33,14 +33,13 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<Product> create(@Valid @RequestBody ProductRequest request) {
-        Product created = service.create(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.create(request));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProductResponse> updateProduct(@Valid @RequestBody ProductRequest request, @PathVariable Long id) {
-        ProductResponse productResponse = service.updateProduct(request, id);
-        return ResponseEntity.status(HttpStatus.OK).body(productResponse);
+    public ResponseEntity<ProductResponse> updateProduct(@Valid @RequestBody ProductRequest request,
+                                                         @PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.updateProduct(request, id));
     }
 
     @DeleteMapping
@@ -49,12 +48,10 @@ public class ProductController {
         return ResponseEntity.noContent().build();
     }
 
-    @PatchMapping
+    @PatchMapping("/{id}")
     public ResponseEntity<ProductResponse> updatePartial(@RequestBody ProductResponse productResponse,
                                                          @PathVariable Long id) {
-        ProductResponse productResponse1 = service.updatePartial(productResponse, id);
-        return ResponseEntity.ok(productResponse);
-        //  return ResponseEntity.status(HttpStatus.OK).body(service.updatePartial(productResponse, id));
+        return ResponseEntity.ok(service.updatePartial(productResponse, id));
     }
 
 

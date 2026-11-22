@@ -1,0 +1,13 @@
+com\example\erp\model\Product.class
+com\example\erp\repository\ProductRepository.class
+com\example\erp\ErpInventoryApplication.class
+com\example\erp\dto\ProductResponse$ProductResponseBuilder.class
+com\example\erp\dto\ProductRequest.class
+com\example\erp\exception\ProductNotFoundException.class
+com\example\erp\model\Product$ProductBuilder.class
+com\example\erp\dto\ProductResponse.class
+com\example\erp\dto\StockAdjustmentRequest.class
+com\example\erp\service\ProductService.class
+com\example\erp\mapper\ProductMapper.class
+com\example\erp\exception\ApiExceptionHandler.class
+com\example\erp\controller\ProductController.class
